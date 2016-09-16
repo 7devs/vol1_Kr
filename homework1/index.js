@@ -7,8 +7,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // 将要处理的逻辑交给具体的包来执行
-app.use('/albums', require('./lib/routers/albums'));
-app.use('/users', require('./lib/routers/users'));
+app.use('/album', require('./lib/routers/albums'));
+app.use('/user', require('./lib/routers/users'));
 
 
 app.use('/*', function(req, res, next) {

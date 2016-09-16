@@ -14,27 +14,6 @@ r.route('/longerSong')
         res.send(longerSong);
     });
 
-r.route('/:id')
-    .get(function(req, res, next){
-        var id=req.params.id-1
-        if(id>=0 && id<=albumsModel.length){
-            res.send(albumsModel[id]);
-        }else{
-            res.status(404).send('Album is not found!')
-        }
-    });
-
-r.route('/:id')
-    .put(function(req, res, next){
-        if(id>=0 && id<=usersModel.length){
-            albumsModel[id].length=parseInt(req.body.length);
-            albumsModel[id].title=req.body.title;
-            req.send(albumsModel[id]);
-        }else{
-            req.status(404).send('Album is not found!');
-        }
-    });
-
 r.route('/singer/:name')
     .get(function(req, res, next){
         var name=req.params.name;
@@ -67,6 +46,28 @@ r.route('/search')
             res.status(404).send('Album is not found!');
         }
     });
+
+    r.route('/:id')
+        .get(function(req, res, next){
+            var id=req.params.id-1
+            if(id>=0 && id<=albumsModel.length){
+                res.send(albumsModel[id]);
+            }else{
+                res.status(404).send('Album is not found!')
+            }
+        });
+
+    r.route('/:id')
+        .put(function(req, res, next){
+            var id=req.params.id-1
+            if(id>=0 && id<=usersModel.length){
+                albumsModel[id].length=parseInt(req.body.length);
+                albumsModel[id].title=req.body.title;
+                res.send(albumsModel[id]);
+            }else{
+                res.status(404).send('Album is not found!');
+            }
+        });
 
 
 
