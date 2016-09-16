@@ -37,7 +37,6 @@ r.route('/search')
         for(var i=0; i<albumsModel.length; i++){
             if(albumsModel[i].type==type){
                 album.push(albumsModel[i]);
-
             }
         }
         if(album.length!==0){

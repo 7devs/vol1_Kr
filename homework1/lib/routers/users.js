@@ -35,20 +35,23 @@ r.route('/count/:sex')
     });
 
 r.route('/search')
-    .get(function(req, res, next){
-        var xxx=req.query.company;
-        var user=[];
-        for(var i=0; i<albumsModel.length; i++){
-            var indexedcompany=(albumsModel[i].company).toLowerCase()
-            if(indexedcompany.indexOf(xxx.toLowerCase())!==-1){
-                album.push(albumsModel[i]);
-            }
-        }
-        if(album.length!==0){
-            res.send(user);
-        }else {
-            res.status(404).send('User is not found!');
-        }
+    .get(function(req,res,next){
+        var company=req.query.company.toLowerCase();
+        var user = [];
+        for (var i=0; i < usersModel.length; i++){
+            var indexedcompany=usersModel[i].company.toLowerCase();
+            if (indexedcompany.indexOf(company)!==-1) {
+               var result=usersModel[i].firstName
+               user.push(result);
+          }
+      }
+
+      if (user.length!==0){
+          res.send(user);
+      } else {
+          res.status(404).send('User is not found!');
+      }
+
     });
 
     r.route('/:id')
