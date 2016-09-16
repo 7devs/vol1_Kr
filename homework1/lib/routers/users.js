@@ -19,10 +19,10 @@ r.route('/ageAvg')
 r.route('/count/:sex')
     .get(function(req, res, next){
         var sex=req.params.sex;
-        var count = 0;
-        if (sex == 'male' || sex == 'female') {
-            for (var i = 0; i < usersModel.length; i++) {
-                if (usersModel[i].sex == sex) {
+        var count=0;
+        if (sex=='male' || sex=='female') {
+            for (var i=0; i < usersModel.length; i++) {
+                if (usersModel[i].sex==sex) {
                     count++;
                 }
             }
@@ -37,7 +37,7 @@ r.route('/count/:sex')
 r.route('/search')
     .get(function(req,res,next){
         var company=req.query.company.toLowerCase();
-        var user = [];
+        var user=[];
         for (var i=0; i < usersModel.length; i++){
             var indexedcompany=usersModel[i].company.toLowerCase();
             if (indexedcompany.indexOf(company)!==-1) {
