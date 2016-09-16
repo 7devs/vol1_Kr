@@ -41,8 +41,7 @@ r.route('/search')
         for (var i=0; i < usersModel.length; i++){
             var indexedcompany=usersModel[i].company.toLowerCase();
             if (indexedcompany.indexOf(company)!==-1) {
-               var result=usersModel[i].firstName
-               user.push(result);
+               user.push(usersModel[i]);
           }
       }
 
@@ -68,12 +67,12 @@ r.route('/search')
         .put(function(req, res, next){
             var id=req.params.id-1;
             if(id>=0 && id<=usersModel.length){
-            var mAge=isNaN(req.body.age);
-            if(mAge){
+            var mAge=parseInt(req.body.age);
+            if(isNaN(mAge)){
                 res.send('This is not a number!');
 
             }else{
-                usersModel[id].age=req.body.age;
+                usersModel[id].age=mAge;
                 res.send(usersModel[id]);
             };
         }else{
